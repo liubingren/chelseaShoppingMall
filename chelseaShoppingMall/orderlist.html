@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html ng-app="App" ng-controller="Controller">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximun-scale= 1.0, minimun-scale= 1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="libs/css/common.min.css">
+		<link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css" />
+
+		<script type="text/javascript" src="libs/dist/all.js"></script>
+		<script type="text/javascript" src="libs/iscroll/build/iscroll.js"></script>
+		<script type="text/javascript" src="libs/jquery/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="libs/dist/index_clone.js"></script>
+		<script type="text/javascript" src="libs/dist/clone.js"></script>
+		<script type="text/javascript" src="libs/js/angular.js"></script>
+        <script type="text/javascript" src="libs/js/common.js"></script>
+        <script type="text/javascript" src="libs/js/jquery-confirm.js"></script>
+
+	</head>
+
+	<body onload="loaded()">
+		<div id="header">
+			<a class="fa fa-arrow-left  back" href="index.html"></a>我的订单<i class="fa fa-list  list"></i>
+		</div>
+		<div class="nav category">
+	        <a href="javascript:(0)" class="">全部</a>
+	        <a href="javascript:(0)" class="">待付款</a>
+	        <a href="javascript:(0)" class="">待发货</a>
+	        <a href="javascript:(0)" class="">待收货</a>
+	        <a href="javascript:(0)" class="">待评价</a>
+        </div>
+		<div id="wrapper" class="wrapper_orderlist active">
+			<div id="scroller">
+				<ul>
+					<li ng-repeat="product in products">
+						<div class="order-item">
+				            <div class="shopname">
+				                <div class="col-xs-8"><a href="#"  class="ng-binding">店铺1</a></div>
+				                <div class="col-xs-4 text-right" style="color: #001489;">交易成功</div>
+				            </div>
+				            <div class="product-content">
+				                <div class="content-details" ng-repeat="pro in product.product">
+				                    <div class="item-img"><a href="javascript:(0)"><img  src="{{pro.img}}"></a></div>
+				                    <a href="javascript:(0)" class="item-content">
+				                        <span class="item-name">{{pro.title}}</span>
+				                        <span class="item-controller">
+				                            <span class="item-price" style="color: #001489;">{{pro.price}}</span>
+				                            <span class="item-count" style="color: #001489;">X <span>{{pro.number}}</span></span>
+				                        </span>
+				                    </a>
+				                </div>
+				            </div>
+				            <div class="item-total text-right" style="overflow: hidden;">
+				               <span class="ordernumber" style="text-align: left;float: left;">订单编号:{{product.ordernumber}}</span> 
+				                <span class="">
+				                	共<span class="totalnumber" style="color: #001489;">{{product.length}}</span>
+				                	商品，合计：￥<span class='totalprice' style="color: #001489;">{{product.total}}</span>
+				                </span>
+				            </div>
+				            <div class="item-control">
+				                <a href="javascript:(0)">付款</a>
+				                <a href="#">删除订单</a>
+				                <a href="#">查看物流</a>
+				            </div>
+		                </div>	
+					</li>
+					
+					
+				</ul>
+
+			</div>
+		</div>
+		
+		
+		
+		<div class="navmorelist" id="navmorelist">
+				<ul class="f14">
+					<li>
+						<a href="login.html">登录</a>
+					</li>
+					<li>
+						<a href="register.html">注册</a>
+					</li>
+					<li>
+						<a href="index.html">首页</a>
+					</li>
+					<li>
+						<a href="list_page.html">分类查询</a>
+					</li>
+					<li>
+						<a href="cart.html">购 物 车</a>
+					</li>
+					<li>
+						<a href="user.html">会员中心</a>
+					</li>
+				</ul>
+		</div>
+		
+		<div id="footer">
+			<div><a class="fa fa-home" href="index.html"></a>首页</div>
+			<div><a class="fa fa-car" href="cart.html"></a>购物车</div>
+			<div><a class="fa fa-user" href="user.html"></a>个人中心</div>
+		</div>
+		<script type="text/javascript">
+		    $(".list").click(function(){
+				$("#navmorelist").toggleClass("active");
+			});
+            
+			 var app=angular.module("App",['commonApp']);
+			
+            app.controller("Controller",['$scope','$http',function($scope,$http){
+            							
+                        $http.post("takeProductFromOrderList.php").success(function(response){
+                           console.log(response);
+                           $scope.products=response;
+                           $scope.length=response.length;
+
+                        });
+            }])
+            var myScroll;
+
+			function loaded() {
+				setTimeout(function(){
+					myScroll = new IScroll('.wrapper_orderlist', {
+						mouseWheel: true,
+						click:true,
+						taps:true,
+						scrollbars:true
+					});
+				},800);
+			}
+           
+			document.addEventListener('touchmove', function(e) {
+				e.preventDefault();
+			}, false);
+		</script>
+	</body>
+
+</html>

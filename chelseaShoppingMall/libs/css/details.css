@@ -1,0 +1,93 @@
+html body #header span {
+  display: block;
+  width: 52px;
+  height: 48px; }
+
+html body #header .details {
+  position: absolute;
+  left: 125px;
+  top: 1px; }
+
+html body #header .details.active {
+  background-color: white;
+  color: black; }
+
+html body #header .comment {
+  position: absolute;
+  left: 185px;
+  top: 1px; }
+
+html body #header .comment.active {
+  background-color: white;
+  color: black; }
+
+html body #wrapper.wrapper_details {
+  position: absolute;
+  top: 48px; }
+  html body #wrapper.wrapper_details .price.active {
+    color: red;
+    font-weight: bold; }
+  html body #wrapper.wrapper_details .content {
+    margin-top: 10px; }
+    html body #wrapper.wrapper_details .content .category2 {
+      width: 100%;
+      background-color: #fff;
+      padding: 10px; }
+      html body #wrapper.wrapper_details .content .category2 p {
+        text-align: left;
+        color: #999; }
+        html body #wrapper.wrapper_details .content .category2 p span {
+          color: #000;
+          font-size: 14px; }
+  html body #wrapper.wrapper_details .ul_wrapper_details {
+    display: none; }
+  html body #wrapper.wrapper_details .ul_wrapper_details.active {
+    display: block; }
+  html body #wrapper.wrapper_details .comment_wrapper {
+    display: none; }
+    html body #wrapper.wrapper_details .comment_wrapper i {
+      color: red; }
+    html body #wrapper.wrapper_details .comment_wrapper li {
+      border: none; }
+    html body #wrapper.wrapper_details .comment_wrapper img {
+      width: 25px;
+      height: 25px;
+      border-radius: 100%;
+      vertical-align: middle;
+      margin-right: 10px; }
+  html body #wrapper.wrapper_details .comment_wrapper.active {
+    display: block; }
+
+html body .buy_toolbar {
+  position: fixed;
+  bottom: 0;
+  height: 48px;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  border-top: solid 1px #8E488E; }
+  html body .buy_toolbar div.item-count {
+    background-color: #8E488E;
+    min-width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    position: absolute;
+    right: 24px;
+    top: 10px;
+    font-size: 9px;
+    text-align: center;
+    color: #fff;
+    padding: 0 2px;
+    line-height: 15px; }
+  html body .buy_toolbar a:nth-child(2) {
+    background-color: #dd3d97;
+    height: 100%;
+    color: #fff; }
+  html body .buy_toolbar a:last-child {
+    background-color: #8E488E;
+    height: 100%;
+    color: #fff; }
+  html body .buy_toolbar i {
+    color: #dd3d97; }

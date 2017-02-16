@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximun-scale= 1.0, minimun-scale= 1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="libs/css/common.min.css">
+		<link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="libs/css/jquery-confirm.css">
+        
+		<script type="text/javascript" src="libs/dist/all.js"></script>
+		<script type="text/javascript" src="libs/jquery/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="libs/dist/index_clone.js"></script>
+		<script type="text/javascript" src="libs/dist/clone.js"></script>
+        <script type="text/javascript" src="libs/js/angular.js"></script>
+        <script type="text/javascript" src="libs/js/common.js"></script>
+        <script type="text/javascript" src="libs/js/jquery-confirm.js"></script>
+        <script type="text/javascript" src="libs/zepto/src/zepto.js"></script>
+		<script src="html5-form/checkValidity.js"></script>
+        <style>
+        .error{
+        	z-index: 200;
+            position: absolute;
+            border: 1px solid #f0f0f0;
+            border-radius: 5px;
+            padding: 15px 10px;
+            background-color: white;
+            font-size: 14px;
+            color: #282828;
+            box-shadow: 0 0 20px #282828;
+        }
+    
+        .error:after{
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 10px;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid white;
+        }
+
+    .error:after{
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 10px;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid white;
+    }
+
+    .error:before{
+        content: "!";
+        display: inline-block;
+        background-color: rgb(250,168,50);
+        font-size: 16px;
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        color: white;
+        border-radius: 2px;
+        text-align: center;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        vertical-align: middle;
+    }
+
+    .error span{
+        display: inline-block;
+        vertical-align: top;
+        line-height: 18px;
+    }
+
+    </style>
+	</head>
+
+	<body>
+		<div id="header">
+			<a class="fa fa-arrow-left  back" href="index.html"></a>登录<i class="fa fa-list  list"></i>
+		</div>
+	    <div class="content_boby">
+	    	<form  class="form sign-up" ng-app="App" ng-controller="controller">
+	    		<ul>
+	    			<li class="col-xs-12">
+	    				<input type="text" placeholder="输入昵称" class="form-control required" required="required" ng-model='account'/>
+	    			</li>
+	    		</ul>
+	    		<ul>
+	    			<li class="col-xs-12">
+	    			  <input type="password" value="" placeholder="输入密码" class="form-control required" required="required" name="password" pattern=".{6,20}" pm="密码要在6到20位之间" ng-model='password'/>
+	    			</li>
+	    		</ul>
+	    		<ul>
+	    			<li class="col-xs-12">
+	    				<input type="submit" style="background: #001489;" id="confirm-sign" value="登录" class="form-control required btn" ng-click="submit()"/>
+	    			</li>
+	    		</ul>
+	    	</form>
+	    </div>
+		<div class="navmorelist" id="navmorelist">
+				<ul class="f14">
+					<li>
+						<a href="login.html">登录</a>
+					</li>
+					<li>
+						<a href="register.html">注册</a>
+					</li>
+					<li>
+						<a href="index.html">首页</a>
+					</li>
+					<li>
+						<a href="list_page.html">分类查询</a>
+					</li>
+					<li>
+						<a href="cart.html">购 物 车</a>
+					</li>
+					<li>
+						<a href="user.html">会员中心</a>
+					</li>
+				</ul>
+		</div>
+
+		
+
+		<script type="text/javascript">
+		     $(".list").click(function(){
+				$("#navmorelist").toggleClass("active");
+			});
+		
+		    var app=angular.module("App",['commonApp']);
+            app.controller("controller",['$scope','$http',function($scope,$http){
+            	$scope.submit=function(){
+            		$http.post("LOGIN.PHP",{account:$scope.account,pwd:$scope.password}).success(function(response){
+						//ng会主动把response转化格式，不需要JSON.parse
+						if(response.state==true){
+							$.alert(response.message);
+						 window.location.href="user.html";
+						}else{
+						  $.alert(response.message);
+						}
+						
+            		});
+            	}
+            }])
+		</script>
+	</body>
+
+</html>

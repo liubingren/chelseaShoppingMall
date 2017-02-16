@@ -1,0 +1,153 @@
+#wrapper.wrapper_orderdetails{
+    ul{
+        li{
+            .layout-body {
+                right: 0;
+                bottom: 54px;
+                left: 0;
+                overflow: auto;
+                .address {
+                    width: 100%;
+                    position: relative;
+                    height: 82px;
+                    border-bottom: solid 1px #ccc;
+                    background-color: #fff;
+                    div:first-child{
+                        width: 50px;
+                        float: left;
+                        text-align: center;
+                        font-size: 18px;
+                        line-height: 68px;
+                    }
+                    div:nth-child(2) {
+                        position: absolute;
+                        left: 50px;
+                        right: 50px;
+                    }
+                    div:last-child{
+                        width: 50px;
+                        float: right;
+                        text-align: center;
+                        font-size: 18px;
+                        line-height: 68px;
+                    }        
+                    div>a {
+                        display: block;
+                        padding: 5px 0;
+                        font-size: 12px;
+                    }
+                }
+                .empty{
+                    height: 48px;
+                    line-height: 48px;
+                    font-size: 14px;
+                    text-align: center;
+                    display: block; 
+                }
+                .shoppingcar-list{
+                    img {
+                        border-radius: 6px;
+                        height: 85px;
+                        max-width: 99%;
+                    }
+                    div.shopname {
+                        width: 100%;
+                        background-color: #fff;
+                        padding: 8px 15px;
+                    }
+                    div.productlist {
+                        width: 100%;
+                        height: 105px;
+                        border-top: solid 1px #ccc;
+                        vertical-align: middle;
+                        padding: 10px 0;
+                        background-color: #fff;
+                        position: relative;
+                        .product-img {
+                            width: 80px;
+                            float: left;
+                        }
+                        .item-content {
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
+                            bottom: 10px;
+                            left: 80px;
+                            .product-name {
+                                font-size: 14px;
+                                padding: 0 5px;
+                                height: 58px;
+                            }
+                            .item-controller {
+                                height: 32px;
+                                overflow: hidden;
+                                .product-price {
+                                    float: left;
+                                    height: 25px;
+                                    line-height: 25px;
+                                    color: #e80080;
+                                    font-size: 16px;
+                                }
+                                .item-count {
+                                    float: right;
+                                    margin-top: 5px;
+                                    color: deeppink;
+                                }
+                            }
+                        }
+                    }
+                    .list-group {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        background-color: #fff;
+                        border: none;
+                        .list-group-item {
+                            width: 100%;
+                            height: 48px;
+                            line-height: 48px;
+                            border: none;
+                            border-top: solid 1px #ccc;
+                            padding: 0 5px;
+                            input[type=text] {
+                                width: 100%;
+                                border: none;
+                                box-shadow: none;
+                                outline: none;
+                            }
+                            .spanbox{
+                                float: right;
+                                .totalnumber{
+                                    color: red;
+                                }
+                                .totalprice{
+                                    color: red;
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}
+
+.orderdetail-toolbar {
+    width: 100%;
+    height: 46px;
+    position: fixed;
+    bottom: 0;
+    text-align: right;
+    border-top: solid 1px deeppink;
+    padding-right: 10px;
+    a{
+        display: inline-block;
+        padding: 5px 10px;
+        border: solid 1px #ccc;
+        border-radius: 5px;
+        margin-left: 5px;
+        margin-top: 7px;
+    }
+ 
+}     

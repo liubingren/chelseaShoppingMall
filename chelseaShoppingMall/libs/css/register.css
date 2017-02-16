@@ -1,0 +1,26 @@
+.content_boby {
+  position: absolute;
+  top: 45px;
+  bottom: 54px;
+  right: 0;
+  left: 0; }
+  .content_boby .form {
+    padding: 10px;
+    width: 100%;
+    background-color: white; }
+    .content_boby .form ul {
+      padding: 0;
+      height: 34px;
+      line-height: 34px;
+      width: 100%;
+      position: relative;
+      margin-bottom: 15px; }
+      .content_boby .form ul li {
+        padding: 0;
+        list-style: none; }
+        .content_boby .form ul li .btn {
+          vertical-align: top;
+          border-radius: 0 4px 4px 0;
+          width: 100%;
+          background-color: #CD235C;
+          color: white; }

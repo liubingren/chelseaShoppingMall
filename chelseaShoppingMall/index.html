@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximun-scale= 1.0, minimun-scale= 1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">		
+	<title></title>
+    <link rel="stylesheet" type="text/css" href="libs/css/common.min.css">
+    <link rel="stylesheet" type="text/css" href="libs/swiper/dist/css/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css"/>
+    
+    <script type="text/javascript" src="libs/dist/all.js"></script>
+    <script type="text/javascript" src="libs/iscroll/build/iscroll.js"></script>
+    <script type="text/javascript" src="libs/swiper/dist/js/swiper.min.js"></script>
+    <script type="text/javascript" src="libs/jquery/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="libs/dist/index_clone.js"></script>
+    <script type="text/javascript" src="libs/dist/clone.js"></script>
+    <script type="text/javascript" src="libs/lazyload/jquery.lazyload.min.js"></script>
+    <!--<style type="text/css">
+    	.mask{position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(0,0,0,0.2);}
+        .mask>i{position:fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 40px; color:#025c90;}
+		.item-hidden{display:none;}
+    </style>-->
+</head>
+<body>
+	<div id="header"><img src="libs/img/chelsea/logo.png" style="height: 45px;width: 45px;"/><i class="fa fa-search  search"></i></div>
+	<div id="wrapper" class="wrapper_index">
+		<div id="scroller">
+			<ul>
+				<li>
+					  <!--Swiper--> 
+				    <div class="swiper-container">
+				        <div class="swiper-wrapper">
+				            <div class="swiper-slide"><img src="libs/img/chelsea/che6.jpg"/></div>
+				            <div class="swiper-slide"><img src="libs/img/chelsea/che8.jpg"/></div>
+				            <div class="swiper-slide"><img src="libs/img/chelsea/che12.jpg"/></div>
+				          
+				        </div>
+				         <!--Add Pagination--> 
+				        <div class="swiper-pagination"></div>
+				    </div>
+				</li>
+				<li class="item2">
+					<a href="list_page.html"><img src="libs/img/chelsea/che5.jpg"/></a>
+					<a href="list_page.html"><img src="libs/img/chelsea/che7.jpg"/></a>
+				</li>
+				<li class="item3">
+					<img src="libs/img/chelsea/che13.jpg"/>
+					<img src="libs/img/chelsea/che2.jpg"/>
+				</li>
+				<li class="item3">
+					<img src="libs/img/chelsea/che1.jpg"/>
+					<img src="libs/img/chelsea/che11.jpg"/>
+				</li>
+				<li class="item3">
+					<img src="libs/img/chelsea/che7.jpg"/>
+					<img src="libs/img/chelsea/che9.jpg"/>
+				</li>
+				<li class="item3">
+					<img src="libs/img/chelsea/che4.jpg"/>
+					<img src="libs/img/chelsea/che8.jpg"/>
+				</li>
+				<li class="item3">
+					<img src="libs/img/chelsea/che3.jpg"/>
+					<img src="libs/img/chelsea/che2.jpg"/>
+				</li>
+				<li>
+					<div class="products1">
+						<ul>
+							<li>
+								<a href="list_page.html" title="">
+									<img src="libs/img/chelsea/che12.jpg" dk-bind="img" alt="" style="width: 100%;">
+									<span dk-bind="title" style="color: darkblue;"></span>
+									<span dk-bind="price" class="price" style="color: darkblue; float:right"></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+			    </li>
+			
+			</ul>
+			
+		</div>
+	</div>
+
+		<a class="backToHead toTop" style="background: #001489;">
+			<i class="fa fa-arrow-up"></i>
+		</a>
+	
+	<div id="footer">
+		<div><a class="fa fa-home" href="index.html"></a>首页</div>
+		<div><a class="fa fa-car" href="cart.html"></a>购物车</div>
+		<div><a class="fa fa-user" href="user.html"></a>个人中心</div>
+	</div>
+<script type="text/javascript">
+
+
+var myScroll;
+
+function loaded () {
+	setTimeout(function(){
+		myScroll = new IScroll('#wrapper', { mouseWheel: true,click:true, scrollbars: true});
+		$(".toTop").click(function(){
+			myScroll.scrollTo(0, 0, 100);
+			
+		});
+	},400)
+		
+}
+window.addEventListener("load",loaded,false);
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+
+var swiper = new Swiper('.swiper-container', {
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    autoplay:2000,
+    loop:true
+});
+    
+
+</script>
+</body>
+</html>

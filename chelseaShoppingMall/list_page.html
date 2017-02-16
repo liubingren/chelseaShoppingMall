@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximun-scale= 1.0, minimun-scale= 1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="libs/css/common.min.css">
+		<link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="libs/css/list_page.css" />
+
+		<script type="text/javascript" src="libs/dist/all.js"></script>
+		<script type="text/javascript" src="libs/iscroll/build/iscroll.js"></script>
+		<script type="text/javascript" src="libs/jquery/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="libs/dist/list_page.js"></script>
+        <script type="text/javascript" src="libs/swiper/dist/js/swiper.min.js"></script>
+        <script type="text/javascript" src="libs/js/angular.min.js"></script>
+        <script type="text/javascript" src="libs/js/common.js"></script>
+        <script type="text/javascript" src="libs/js/jquery-confirm.js"></script>
+ 
+	    <style type="text/css">
+	    	 .price {
+                color: red;
+                font-size: 16px;
+                font-weight: bold;
+            }
+	    </style>
+	</head>
+
+	<body onload="loaded()">
+		<div id="header">
+			<a class="fa fa-arrow-left  back" href="index.html"></a>切尔西专场<i class="fa fa-list  list"></i></div>
+		<div class="category">
+			<div class="category_1">分类<i class="fa fa-caret-down"></i></div>
+			<div class="category_2">品牌<i class="fa fa-caret-down"></i></div>
+			<div class="category_3">价格排序<i class="fa fa-caret-down"></i></div>
+		</div>
+
+		<div class="category-content category-1">
+			<ul class="leval1 leval col-xs-4">
+				<li class="active">
+					<a href="#" id="111">分类1-1</a>
+				</li>
+				<li>
+					<a href="#" id="2">分类1-2</a>
+				</li>
+				<li>
+					<a href="#" id="3">分类1-3</a>
+				</li>
+				<li>
+					<a href="#" id="4">分类1-4</a>
+				</li>
+				<li>
+					<a href="#" id="5">分类1-5</a>
+				</li>
+			</ul>
+			<ul class="col-xs-4 leval2 leval">
+				<li>
+					<a href="#" id="6" flag="1">分类2-1</a>
+				</li>
+				<li>
+					<a href="#" id="7" flag="1">分类2-2</a>
+				</li>
+				<li class="2-8">
+					<a href="#" id="8" flag="1">分类2-3</a>
+				</li>
+				<li class="2-9">
+					<a href="#" id="9" flag="2">分类2-4</a>
+				</li>
+				<li>
+					<a href="#" id="10" flag="3">分类2-5</a>
+				</li>
+			</ul>
+			<ul class="col-xs-4 leval3 leval">
+				<li>
+					<a href="#" id="11" flag="5">分类3-1</a>
+				</li>
+				<li class="3-7">
+					<a href="#" id="12" flag="7">分类3-2</a>
+				</li>
+				<li class="3-9">
+					<a href="#" id="13" flag="9">分类3-3</a>
+				</li>
+				<li class="3-9">
+					<a href="#" id="14" flag="9">分类3-4</a>
+				</li>
+				<li class="3-9">
+					<a href="#" id="15" flag="9">分类3-5</a>
+				</li>
+			</ul>
+		</div>
+
+		<!--品牌-->
+		<div class="category-content brand">
+			<ul>
+				<li>
+					<a href="#"><img src="libs/img/61.jpg">品牌1</a>
+				</li>
+				<li>
+					<a href="#"><img src="libs/img/61.jpg">品牌2</a>
+				</li>
+				<li>
+					<a href="#"><img src="libs/img/61.jpg">品牌3</a>
+				</li>
+				<li>
+					<a href="#"><img src="libs/img/61.jpg">品牌4</a>
+				</li>
+				<li>
+					<a href="#"><img src="libs/img/61.jpg">品牌5</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="wrapper" class="wrapper active" ng-app="dkApp" ng-controller="dkController">
+			<div id="scroller">
+				<ul>
+					<li ng-repeat="data in datas">
+						<div >
+							<ul>
+								<li>
+									<div title="" myId="{{data.id}}" class="toDetails">
+										<img ng-src={{data.img}}  alt="">
+										<span ng-bind="data.title" class="col-xs-10" style="color: darkblue;"></span>
+										<span ng-bind="data.price" class="price col-xs-2" style="color: darkblue;"></span>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</li>
+
+				</ul>
+
+			</div>
+		</div>
+
+		
+		<div class="navmorelist" id="navmorelist">
+				<ul class="f14">
+					<li>
+						<a href="login.html">登录</a>
+					</li>
+					<li>
+						<a href="register.html">注册</a>
+					</li>
+					<li>
+						<a href="index.html">首页</a>
+					</li>
+					<li>
+						<a href="list_page.html">分类查询</a>
+					</li>
+					<li>
+						<a href="cart.html">购 物 车</a>
+					</li>
+					<li>
+						<a href="user.html">会员中心</a>
+					</li>
+				</ul>
+		</div>
+
+		<div id="footer">
+			<div><a class="fa fa-home" href="index.html"></a>首页</div>
+			<div><a class="fa fa-car" href="cart.html"></a>购物车</div>
+			<div><a class="fa fa-user" href="user.html"></a>个人中心</div>
+		</div>
+		<script type="text/javascript">
+		    var dkApp=angular.module("dkApp",["commonApp"]);
+	    	
+	    	dkApp.controller("dkController",['$scope','$http',function($scope,$http){
+	    		$http.post("listpage.php").success(function(response){
+	    		  $scope.datas=response;
+	    		});
+	    		$("body").on("click",".toDetails",function(){
+	    			myId=$(this).attr("myId");
+	    			$http.post("listpageSetSession.php",{id:myId}).success(function(response){
+						console.log('success');
+						window.location.href="details.html";
+            		});
+	    			
+	    		});
+	    	}])
+			
+			
+			
+			var myScroll;
+
+			function loaded() {
+				setTimeout(function(){
+					myScroll = new IScroll('.wrapper', {
+						mouseWheel: true,
+						click: true,
+						scrollbars:true
+					});
+				},400);
+			}
+
+			document.addEventListener('touchmove', function(e) {
+				e.preventDefault();
+			}, false);
+			
+		</script>
+	</body>
+
+</html>

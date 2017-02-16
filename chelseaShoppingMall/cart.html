@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html ng-app="dkApp" ng-controller="dkController">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximun-scale= 1.0, minimun-scale= 1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="libs/css/common.min.css">
+		<link rel="stylesheet" type="text/css" href="libs/swiper/dist/css/swiper.min.css"/>
+		<link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css" />
+
+		<script type="text/javascript" src="libs/dist/all.js"></script>
+		<script type="text/javascript" src="libs/iscroll/build/iscroll.js"></script>
+		<script type="text/javascript" src="libs/swiper/dist/js/swiper.min.js"></script>
+		<script type="text/javascript" src="libs/jquery/jquery-2.1.1.min.js"></script>
+		<!--<script type="text/javascript" src="libs/dist/index_clone.js"></script>
+		<script type="text/javascript" src="libs/dist/clone.js"></script>-->
+		<script type="text/javascript" src="libs/dist/list_page.js"></script>
+		<script type="text/javascript" src="libs/dist/cart.js"></script>
+		<script type="text/javascript" src="libs/js/angular.min.js"></script>
+        <script type="text/javascript" src="libs/js/common.js"></script>
+        <script type="text/javascript" src="libs/js/jquery-confirm.js"></script>
+         
+	</head>
+
+	<body onload="loaded()">
+		<div id="header">
+			<a class="fa fa-arrow-left  back" href="details.html"></a><span class="cart">购物车</span><i class="fa fa-list  list"></i>
+		</div>
+        <div id="wrapper" class="wrapper_cart active">
+			<div id="scroller">
+				<ul>
+					<li ng-repeat="data in datas">
+						<div class="products1">
+							<ul>
+								<li>
+									
+						<div class="item_option">
+							<i class="fa fa-circle-o choice_one" choiceID='{{data.id}}'></i>
+						</div>
+						<div class="product_img" style="margin-top: -11px;"><a href="#"><img ng-src="{{data.img}}" dk-bind="img"/></a></div>
+						<div class="item_content">
+							<div class="product-name">
+								{{data.title}}
+							</div>
+							<div class="item-controller">
+								<div class="product-price" style="color: #001489;">{{data.price}}</div>
+								<div id="trash">
+									<i class="fa fa-trash-o" deleteid='{{data.id}}'></i>
+								</div>
+								<div class="item-calc">
+									<div class="col-xs-4 minus">
+										<i class="fa fa-minus" minusid='{{data.id}}'></i>
+									</div>
+									<div class="col-xs-4 count" >{{data.number}}</div>
+									<div class="col-xs-4 plus">
+										<i class="fa fa-plus" plusid='{{data.id}}'></i>
+									</div>
+								</div>
+							</div>
+						</div>
+								</li>
+							</ul>
+						</div>
+						
+					</li>
+				</ul>
+
+			</div>
+		</div>
+		
+		<div class="navmorelist" id="navmorelist">
+				<ul class="f14">
+					<li>
+						<a href="login.html">登录</a>
+					</li>
+					<li>
+						<a href="register.html">注册</a>
+					</li>
+					<li>
+						<a href="index.html">首页</a>
+					</li>
+					<li>
+						<a href="list_page.html">分类查询</a>
+					</li>
+					<li>
+						<a href="cart.html">购 物 车</a>
+					</li>
+					<li>
+						<a href="user.html">会员中心</a>
+					</li>
+				</ul>
+		</div>
+		
+		
+		
+		<div class="buy_toolbar">
+	        <div class="col-xs-3">
+	            <a href="javascript:(0)">
+	                <div class="buy-car">
+	                    <i class="fa fa-circle-o choice_all" style="color: darkblue;"></i>全选
+	                </div>
+	               
+	            </a>
+	        </div>
+	        <a href="javascript:(0)" class="col-xs-4" style="background: cornflowerblue;">支付方式></a>
+	        <a href="orderdetails.html" class="col-xs-5 setSessionForTotalprice" style="background: dodgerblue;">确认并支付(<span class="totalPrice">0</span>)</a>
+        </div>
+		
+		<script type="text/javascript">
+		
+		    var dkApp=angular.module("dkApp",["commonApp"]);
+	    	
+	    	dkApp.controller("dkController",['$scope','$http',function($scope,$http){
+	    		$http.post("TAKEFROMCART.PHP").success(function(response){
+					$scope.datas=response;
+					console.log(response);	
+	    		});
+	    		$("body").on("click",".fa-minus",function(){
+						var number=parseInt($(this).parent().next().text())-1;
+	    		        console.log(number);
+	    		        var minusid=$(this).attr("minusid");
+	    		        console.log(minusid);
+	    		        $.post("CHANGENUMBER.PHP",{id:minusid,number:number},function(response){
+						 console.log("perfect");
+            		    });
+	    		});
+	    		$("body").on("click",".fa-plus",function(){
+						var number=parseInt($(this).parent().prev().text())+1;
+	    		        console.log(number);
+	    		        var plusid=$(this).attr("plusid");
+                        $.post("CHANGENUMBER.PHP",{id:plusid,number:number},function(response){
+						 console.log("wonderful");
+            		    });
+	    		});
+
+	    		$("body").on("click",".fa-trash-o",function(){
+	    			var deleteid=$(this).attr("deleteid");
+                    $http.post("DELETE.PHP",{id:deleteid}).success(function(response){
+						if(response.state==true){
+							$.alert(response.message);
+						}else{
+						  $.alert(response.message);
+						}
+						
+            		});
+				}); 
+				$("body").on("click",".setSessionForTotalprice",function(){
+					console.log($(this).find('span').text());
+            		var objet={};
+            		var choiceID;
+            		var count;
+            		$(".fa-check-circle.choice_one").each(function(index,obj){
+            			choiceID=$(this).attr("choiceID");
+                        count=$(this).parent().next().next().find(".count").text();
+            			console.log(count);
+            			objet[choiceID]=count;
+            		});
+            		console.log(objet);
+            		$.post("setSessionForTotalprice.php",{totalprice:$(this).find('span').text(),obj:objet},function(response){
+						 console.log("wonderful");
+            		});
+				});
+				
+	    	}])
+			var myScroll;
+
+			function loaded() {
+				setTimeout(function(){
+					myScroll = new IScroll('.wrapper_cart', {
+						mouseWheel: true,
+						click:true,
+						taps:true
+					});
+				},400);
+			}
+           
+			document.addEventListener('touchmove', function(e) {
+				e.preventDefault();
+			}, false);
+			
+			
+		</script>
+	</body>
+
+</html>

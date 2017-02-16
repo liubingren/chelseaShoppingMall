@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html ng-app="App" ng-controller="controller">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximun-scale= 1.0, minimun-scale= 1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="libs/css/common.min.css">
+		<link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css" />
+
+		<script type="text/javascript" src="libs/dist/all.js"></script>
+		<!--<script type="text/javascript" src="libs/iscroll/build/iscroll.js"></script>-->
+		<script type="text/javascript" src="libs/jquery/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="libs/dist/index_clone.js"></script>
+		<script type="text/javascript" src="libs/dist/clone.js"></script>
+		<script type="text/javascript" src="libs/js/angular.js"></script>
+        <script type="text/javascript" src="libs/js/common.js"></script>
+        <script type="text/javascript" src="libs/js/jquery-confirm.js"></script>
+
+	</head>
+
+	<body>
+		<div id="header">
+			<a class="fa fa-arrow-left  back" href="index.html"></a>会员中心<i class="fa fa-list  list"></i>
+		</div>
+		
+		<div class="content_box">
+			<a href="userinfo.html" class="user-head" style="background: cornflowerblue;">
+	            <span><img src="libs/iscroll/demos/carousel/gaugin.jpg"></span>
+	            <span>
+	                <span>{{account}}</span>
+	                <span><img src="libs/iscroll/demos/carousel/gaugin.jpg">普通会员</span>
+	            </span>
+	            <span><i class="fa fa-chevron-right"></i></span>
+            </a>
+            <div class="user-finance">
+	            <div class="col-xs-4"><a href="javascript:(0)"><div>100</div><div>我的金额</div></a></div>
+	            <div class="col-xs-4"><a href="javascript:(0)"><div>50</div><div>可用金额</div></a></div>
+	            <div class="col-xs-4"><a href="javascript:(0)"><div>1000</div><div>代币</div></a></div>
+            </div>
+            <div class="list-group user-menu first">
+	            <a href="javascript:(0)" class="list-group-item">
+	                <span class="fa-stack fa-lg"><i class="fa fa-user-circle"></i></span>
+	                <span>一级会员</span>
+	                <div class="item-count" style="background: #001489;">5</div>
+	                <span><i class="fa fa-chevron-right"></i></span>
+	            </a>
+	            <a href="javascript:(0)" class="list-group-item">
+	                <span class="fa-stack fa-lg"><i class="fa fa-users"></i></span>
+	                <span>二级会员</span>
+	                <div class="item-count" style="background: #001489;">5</div>
+	                <span><i class="fa fa-chevron-right"></i></span>
+	            </a>
+	            <a href="javascript:(0)" class="list-group-item">
+	                <span class="fa-stack fa-lg"><i class="fa fa-user-secret"></i></span>
+	                <span>三级会员</span>
+	                <div class="item-count" style="background: #001489;">5</div>
+	                <span><i class="fa fa-chevron-right"></i></span>
+	            </a>
+	        </div>
+	        <div class="list-group user-menu last">
+	            <a href="orderlist.html" class="list-group-item">
+	                <span class="fa-stack fa-lg"><i class="fa fa-file-text"></i></span>
+	                <span>我的订单</span>
+	                <span><i class="fa fa-chevron-right"></i></span>
+	            </a>
+	            
+	            <a href="javascript:(0)" class="list-group-item">
+	                <span class="fa-stack fa-lg"><i class="fa fa-edit"></i></span>
+	                <span>完善资料</span>
+	                <span><i class="fa fa-chevron-right"></i></span>
+	            </a>
+	            <a href="resetPassword.html" class="list-group-item">
+	                <span class="fa-stack fa-lg"><i class="fa fa-key"></i></span>
+	                <span>修改密码</span>
+	                <span><i class="fa fa-chevron-right"></i></span>
+                </a>
+	        </div>
+		</div>
+		
+		<div class="navmorelist" id="navmorelist">
+				<ul class="f14">
+					<li>
+						<a href="login.html">登录</a>
+					</li>
+					<li>
+						<a href="register.html">注册</a>
+					</li>
+					<li>
+						<a href="index.html">首页</a>
+					</li>
+					<li>
+						<a href="list_page.html">分类查询</a>
+					</li>
+					<li>
+						<a href="cart.html">购 物 车</a>
+					</li>
+					<li>
+						<a href="user.html">会员中心</a>
+					</li>
+				</ul>
+		</div>
+		
+		<div id="footer">
+			<div><a class="fa fa-home" href="index.html"></a>首页</div>
+			<div><a class="fa fa-car" href="cart.html"></a>购物车</div>
+			<div><a class="fa fa-user" href="user.html"></a>个人中心</div>
+		</div>
+		<script type="text/javascript">
+		    $(".list").click(function(){
+				$("#navmorelist").toggleClass("active");
+			});
+
+			 var app=angular.module("App",['commonApp']);
+			
+            app.controller("controller",['$scope','$http',function($scope,$http){
+            		
+					$http.post("GETSESSION.PHP").success(function(response){
+						if(response.state==true){
+						   $scope.account=response.account;
+						}
+						else{
+						    window.location.href="login.html";
+						}
+            		});
+					
+            }])
+		</script>
+	</body>
+
+</html>

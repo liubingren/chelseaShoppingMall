@@ -1,0 +1,159 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2); }
+
+.mask > i {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  color: #025c90; }
+
+.item-hidden {
+  display: none; }
+
+html {
+  -ms-touch-action: none; }
+  html body {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-size: 12px;
+    font-family: ubuntu, helvetica, arial;
+    overflow: hidden;
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0; }
+    html body #header {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 45px;
+      line-height: 45px;
+      background: #001489;
+      padding: 0;
+      color: #eee;
+      font-size: 20px;
+      text-align: center;
+      font-weight: bold; }
+      html body #header .search {
+        position: absolute;
+        right: 35px;
+        top: 12px; }
+    html body #wrapper {
+      position: absolute;
+      z-index: 1;
+      top: 45px;
+      bottom: 48px;
+      left: 0;
+      width: 100%;
+      background: white;
+      overflow: hidden; }
+      html body #wrapper #scroller {
+        position: absolute;
+        z-index: 1;
+        -webkit-tap-highlight-color: transparent;
+        width: 100%;
+        -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        -o-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-text-size-adjust: none;
+        -moz-text-size-adjust: none;
+        -ms-text-size-adjust: none;
+        -o-text-size-adjust: none;
+        text-size-adjust: none; }
+        html body #wrapper #scroller ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          width: 100%;
+          border-bottom: 1px solid #ccc;
+          text-align: left; }
+          html body #wrapper #scroller ul li {
+            padding: 0;
+            background-color: #fafafa;
+            font-size: 14px; }
+            html body #wrapper #scroller ul li .swiper-container {
+              width: 100%;
+              height: 293px; }
+              html body #wrapper #scroller ul li .swiper-container img {
+                height: 100%;
+                width: 100%; }
+            html body #wrapper #scroller ul li .products1 a {
+              text-decoration: none;
+              color: purple; }
+              html body #wrapper #scroller ul li .products1 a .price {
+                color: red;
+                font-size: 16px;
+                font-weight: bold; }
+              html body #wrapper #scroller ul li .products1 a img {
+                height: 289px;
+                width: 100%; }
+          html body #wrapper #scroller ul li.item2 img {
+            height: 100%;
+            width: 100%; }
+          html body #wrapper #scroller ul li.item2 a img {
+            height: 100%;
+            width: 100%; }
+          html body #wrapper #scroller ul li.item3 img {
+            height: 96px;
+            width: 178px;
+            margin-left: 5px; }
+    html body .backToHead {
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      background-color: #e80080;
+      position: fixed;
+      right: 15px;
+      bottom: 60px;
+      text-align: center;
+      line-height: 50px;
+      font-size: 20px;
+      color: #fff;
+      opacity: 0.7;
+      display: block;
+      z-index: 1; }
+    html body #footer {
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 48px;
+      color: white;
+      background: #CD235C;
+      padding: 0;
+      border-top: 1px solid #444;
+      overflow: hidden;
+      text-align: center; }
+      html body #footer div {
+        width: calc(100% / 3);
+        height: 100%;
+        float: left;
+        padding-top: 9px; }
+        html body #footer div a {
+          display: block;
+          color: white; }

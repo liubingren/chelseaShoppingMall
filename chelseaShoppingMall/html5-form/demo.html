@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body, p, form{
+            margin: 0;
+        }
+        .sign-up{
+            width: 328px;
+            color: #505050;
+            margin-left: 20px;
+        }
+        .sign-up label{
+            line-height: 150%;
+            display: block;
+            margin-top: 20px;
+        }
+        .sign-up input{
+            width: 100%;
+            padding: 0 15px;
+            height: 30px;
+            border: 1px solid #c8c8c8;
+            border-radius: 2px;
+            font-size: 14px;
+            font-family: "Lato Regular";
+            box-sizing: border-box;
+        }
+        .sign-up input.invalid {
+            border: 1px solid #f47575;
+        }        
+        .sign-up input:focus{
+            outline: none;
+            border: 1px solid #38cb7b;
+        }
+        .sign-up input[type=submit]{
+            width: 100%;
+            background-color: #41ca7e;
+            height: 40px;
+            color: #fff;
+            font-size: 18px;
+            margin: 30px 0 30px 0;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .error{
+            position: absolute;
+            border: 1px solid #f0f0f0;
+            border-radius: 5px;
+            padding: 15px 10px;
+            background-color: white;
+            font-size: 14px;
+            color: #282828;
+            box-shadow: 0 0 20px #282828;
+        }
+    
+        .error:after{
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 10px;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid white;
+        }
+
+    .error:after{
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 10px;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid white;
+    }
+
+    .error:before{
+        content: "!";
+        display: inline-block;
+        background-color: rgb(250,168,50);
+        font-size: 16px;
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        color: white;
+        border-radius: 2px;
+        text-align: center;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        vertical-align: middle;
+    }
+
+    .error span{
+        display: inline-block;
+        vertical-align: top;
+        line-height: 18px;
+    }
+
+    </style>
+</head>
+<body>
+    <form class="sign-up">        
+        <label>邮箱地址</label>
+        <input type="email" name="account" t="email" required="">
+        <label>密码</label>
+        <input type="password" name="password" pattern=".{6,20}" pm="密码要在6到20位之间" required=""> 
+        <label>确认密码</label>
+        <input type="password" name="confirm-pwd">
+        <input id="confirm-sign" type="submit" value="注册">
+        <p></p>
+    </form>
+    <script src="http://s.xnimg.cn/ajax/zepto/zepto-1.1.0.all.min.js"></script>
+<!--
+    <script src="./jquery-1.11.3.min.js "></script>
+-->
+    <script src="./checkValidity.js"></script>
+    <script>
+    !function(){
+        var checkAccountExist = false;
+        function submit(){
+            console.log("表单验证成功，准备提交");
+        }
+        newFormCheck($(".sign-up")[0], checkAccountExist, submit);
+    }();
+
+    function checkAccountExist(failCallback, successCallback){
+        var input = this;
+        util.ajax("/register/hasUser", {account: this.value}, function(data){
+            if(data.isUser === true){
+                failCallback();
+            }
+            else{
+                successCallback();
+            }
+        });
+    }
+
+    function checkPwdIdentity(){
+        if(this.form["password"].value !== this.form["confirm-pwd"].value){
+            return false;
+        }
+        return true;
+    }
+
+    function newFormCheck(form, checkAccountExist, submitHandler){
+        var checkRule = {
+            "confirm-pwd": {
+                check: checkPwdIdentity,
+                msg: "两次密码输入不一致"
+            }
+        };
+        if(checkAccountExist){
+            checkRule.account = {
+                check: checkAccountExist,
+                msg: "账户已存在!",
+                async: true
+            };
+        }
+        if(checkAccountExist){
+            checkRule.account = {
+                check: checkAccountExist,
+                msg: "账号已存在",
+                async: true
+            };
+        }
+        return new Form(form, {
+            errorMsgClass: "error",         //错误提示框的类，用于自定义样式
+            errorInputClass: "invalid",     //input无效的类名，用于自定义样式
+            rule: checkRule,
+            lang: "cn",
+            disableBrowserMsg: !(navigator.language || navigator.userLanguage).match(/cn/i)
+        }, submitHandler);
+   }
+
+        
+    </script>
+</body>
+</html>

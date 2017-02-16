@@ -1,0 +1,142 @@
+[
+ {
+      "id": 1,
+      "title": "德罗巴",
+      "img": "libs/img/chelsea/che6.jpg",
+      "price": "1元",
+      "url": ""
+    },
+     {
+      "id": 2,
+      "title": "兰帕德",
+      "img": "libs/img/chelsea/che3.jpg",
+      "price": "2元",
+      "url": ""
+    },
+     {
+      "id": 3,
+      "title": "穆里尼奥",
+      "img": "libs/img/chelsea/che2.jpg",
+      "price": "3元",
+      "url": ""
+    },
+      {
+      "id": 4,
+      "title": "切赫",
+      "img": "libs/img/chelsea/che5.jpg",
+      "price": "4元",
+      "url": ""
+    },
+     {
+      "id": 5,
+      "title": "库尔图瓦",
+      "img": "libs/img/chelsea/che4.jpg",
+      "price": "5元",
+      "url": ""
+    },
+     {
+      "id": 6,
+      "title": "阿扎尔",
+      "img": "libs/img/chelsea/che1.jpg",
+      "price": "6元",
+      "url": ""
+    },
+     {
+      "id": 7,
+      "title": "孔蒂",
+      "img": "libs/img/chelsea/che7.jpg",
+      "price": "7元",
+      "url": ""
+    },
+      {
+      "id": 8,
+      "title": "坎特",
+      "img": "libs/img/chelsea/che8.jpg",
+      "price": "8元",
+      "url": ""
+    },
+     {
+      "id": 9,
+      "title": "路易斯",
+      "img": "libs/img/chelsea/che9.jpg",
+      "price": "9元",
+      "url": ""
+    },
+     {
+      "id": 10,
+      "title": "卡希尔",
+      "img": "libs/img/chelsea/che10.jpg",
+      "price": "10元",
+      "url": ""
+    },
+     {
+      "id": 11,
+      "title": "特里",
+      "img": "libs/img/chelsea/che11.jpg",
+      "price": "11元",
+      "url": ""
+    },
+      {
+      "id": 12,
+      "title": "伊万诺维奇",
+      "img": "libs/img/chelsea/che12.jpg",
+      "price": "12元",
+      "url": ""
+    },
+     {
+      "id": 13,
+      "title": "阿兹皮利奎塔",
+      "img": "libs/img/chelsea/che13.jpg",
+      "price": "13元",
+      "url": ""
+    },
+     {
+      "id": 14,
+      "title": "法布雷加斯",
+      "img": "libs/img/chelsea/che1.jpg",
+      "price": "14元",
+      "url": ""
+    },
+     {
+      "id": 15,
+      "title": "阿隆索",
+      "img": "libs/img/chelsea/che2.jpg",
+      "price": "15元",
+      "url": ""
+    },
+      {
+      "id": 16,
+      "title": "威廉",
+      "img": "libs/img/chelsea/che3.jpg",
+      "price": "16元",
+      "url": ""
+    },
+     {
+      "id": 17,
+      "title": "佩德罗",
+      "img": "libs/img/chelsea/che4.jpg",
+      "price": "17元",
+      "url": ""
+    },
+     {
+      "id": 18,
+      "title": "马克莱莱",
+      "img": "libs/img/chelsea/che5.jpg",
+      "price": "18元",
+      "url": ""
+    },
+     {
+      "id": 19,
+      "title": "马蒂奇",
+      "img": "libs/img/chelsea/che6.jpg",
+      "price": "19元",
+      "url": ""
+    },
+      {
+      "id": 20,
+      "title": "埃辛",
+      "img": "libs/img/chelsea/che7.jpg",
+      "price": "20元",
+      "url": ""
+    }
+]    

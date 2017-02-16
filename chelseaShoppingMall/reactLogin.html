@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="react/react.js"></script>
+		<script type="text/javascript" src="react/react-dom.js"></script>
+		<script type="text/javascript" src="react/browser.min.js"></script>
+		<script type="text/javascript" src="libs/js/jquery-3.1.1.min.js"></script>
+
+	</head>
+	<body>
+		<div id="box"></div>
+		<div id="box2"></div>
+		<script type="text/babel">
+			ReactDOM.render(<h1>nima</h1>,document.getElementById("box"));
+		    //用了browser.min.js会慢，用构建工具react就快了
+		    //定义组件，组件类第一个字母必须大写，不能有多个顶层标签（并排）
+		    //但可以嵌套
+		    var Component1=React.createClass({
+		    	getInitialState(){
+		    		return {name:"",password:""};
+		    	},
+		    	click(event){
+		    		console.log(this.refs.name.value);
+		    		console.log(this.refs.password.value);
+		    		$.post("LOGIN.PHP",{account:this.refs.name.value,pwd:this.refs.password.value},function(response){
+						var _response=JSON.parse(response);
+						if(_response.state==true){
+							console.log(_response.message);
+							window.location.href="user.html";
+						}else{
+						 console.log(_response.message);
+						}
+            		});
+		    		
+		    	},
+		    	render:function(){
+		    		var api=this.props.api;
+		    		var subdom=this.props.children;
+		    		console.log(subdom);
+		    		return(
+		    		   <div>
+		    		   	{api}<br />
+		    		    <input type="text" ref="name" /><br />
+		    		    <input type="password" ref="password" /><br />
+		    		    <input type="button" value="button" onClick={this.click}/>
+		    		   </div>	
+		    		);
+		    	}
+		    });
+		    
+		    ReactDOM.render(<Component1 api="mr.bing"><h1>bing</h1><span></span></Component1>,document.getElementById("box2"));
+		</script>
+	</body>
+</html>
